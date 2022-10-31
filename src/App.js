@@ -1,24 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './Components/Header/Header';
+import Feed from './Components/Feed/Feed';
+import Footer from './Components/Footer/Footer';
+import React, { useState, useCallback } from 'react';
+
+
 
 function App() {
+const [subreddit, setSubreddit] = useState("all");
+const [sortBy, setSortBy] = useState("hot");
+const [posts, setPosts] = useState([])
+
+
+  function handleSubredditChange(e) {
+    setSubreddit(e.target.value);
+  }
+  function onClickSortBy(newSortByOption) {
+    setSortBy(newSortByOption);
+    console.log(sortBy)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Header 
+      sortBy={sortBy}
+      onClickSortBy={onClickSortBy}
+    />
+    <Feed 
+      subreddit={subreddit}
+      sortBy={sortBy}
+      posts={posts}
+      setPosts={setPosts}
+    />
+    <Footer />
+    </>
   );
 }
 

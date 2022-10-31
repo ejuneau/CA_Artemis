@@ -1,0 +1,26 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    height: 70vh;
+    padding-top: 5vw;
+    padding-left: 5vh;
+    padding-right: 5vw;
+    position: fixed;
+    right: 0;
+}
+
+.sidebar, .sidebar * {
+    background-color: rgb(65, 90, 116);
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+}
+
+.code {
+    display: inline;
+    font-family: 'Courier New', Courier, monospace;
+    background-color:rgb(45, 66, 88);
+    padding: 3px;
+    border-radius: 5px;
+    color: rgb(185, 171, 140);
+}
