@@ -1,7 +1,31 @@
+import React, { useState } from 'react';
 import './Sidebar.css';
 export default function Sidebar() {
+
+    const [isOut, setIsOut] = useState(false);
+    const [isHover, setIsHover] = useState(false);
+
+    function handleClick() {
+        setIsOut(current => !current);
+    }
+    function handleMouseEnter() {
+        setIsHover(true);
+    }
+    function handleMouseLeave() {
+        setIsHover(false);
+    }
+
+    const sideBarStyle ={
+        transform: `translateX(${isOut ? isHover ? '1vw' : '0' : isHover ? '40vw' : '45vw'})`,
+        transition: 'transform 1s ease',
+    }
+
     return (
-        <div className="sidebar">
+        <div className="sidebar" 
+        style={sideBarStyle} 
+        onClick={handleClick}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}>
             Sidebar! Things will go here.<br></br>Todo:
             <ul>
                 <li>Implement redux:<br></br>Implementing redux libraries to this app will allow for much more versatility in creating the app the way I want it. Managing state with pure React can be tricky, and the use of stores, slices, and reducers can make things much more manageable.</li>
