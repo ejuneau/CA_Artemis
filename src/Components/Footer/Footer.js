@@ -1,36 +1,17 @@
 import './Footer.css';
+import SortByOptions from '../util/RenderSortByOptions';
 export default function Footer(props) {
-    const sortByOptions = {
-        "best": "",
-        "new": "new",
-        "hot": "hot",
-        "top": "top",
-    }
-        
-    function getSortByClass(sortByOption) {
-        if (props.sortBy === sortByOption) {
-            return 'active';
-        } else return ''
-    }
-        
-    function renderSortByOptions() {
-        return Object.keys(sortByOptions).map(sortByOption => {
-            let sortByOptionValue = sortByOptions[sortByOption];
-            return <li className={getSortByClass(sortByOptionValue)} key={sortByOptionValue} onClick={() => props.onClickSortBy(sortByOptionValue)}>{sortByOption}</li>;
-        });
-    }
-        
     return (
         <footer>
             <div className="footer-spacer">
                 <div className="footer-title"><h1>Artemis</h1><p>for Reddit, v.0.1</p></div>
-                <nav>
-                    {renderSortByOptions()}
-                </nav>
+                <SortByOptions 
+                    sortBy={props.sortBy}
+                    onClickSortBy={props.onClickSortBy}/>
             </div>
         </footer>
     );
-          }
+}
         // <footer>
         //     <div className="footer-spacer">
         //         <h1>Artemis</h1>

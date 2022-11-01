@@ -1,0 +1,35 @@
+nav {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    margin-bottom: auto;
+    margin-top: auto;
+    color: #ffffff;
+  }
+  
+nav li {
+    cursor: pointer;
+    list-style: none;
+    width: 0.5em;
+    border-bottom: 1px solid #fff;
+    padding: 0 2.58rem .33rem 2.58rem;
+    line-height: 1.13;
+    text-align: center;
+    font-weight: 600;
+    font-size: .83rem;
+    transition: color .25s;
+  }
+  
+nav li:hover {
+    color: #d4cfcf;
+  }
+  
+nav li.active,
+nav li.active:hover {
+    border-bottom: 1px solid #f0c36c;
+    color: #f0c36c;
+  }

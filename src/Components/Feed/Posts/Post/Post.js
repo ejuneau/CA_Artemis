@@ -7,7 +7,7 @@ export default function Post(props) {
 //tests nature of post (image, video, self, article) and returns appropriate body element    
 // if self-post, simply return self-text      
         if (props.post.is_self) {                            
-            return <p className="post-body-self-text">{props.post.selftext}</p>  
+            return <p className="post-body-self-text">{JSON.stringify(props.post.selftext)}</p>  
             
             
 // use RegEx to test if post is image, and return image if so
@@ -22,7 +22,9 @@ export default function Post(props) {
                     return <video className="post-body-video" src={props.post.media.reddit_video.fallback_url} autoPlay controls loop/>
                 } else return <h1>no fallback_url</h1>
 
-            } else return <h1>is_video: false</h1>
+            } else if (props.post.domain === "twitter.com") {
+                return JSON.stringify(props.post.media_embed.content);
+            }
 // if none of these conditions are met (most likely an article post) simply return thumbnail with link to url
         } else {                                                         
             return props.post.thumbnail==="default"?<p>via <a href={props.post.url}>{props.post.domain}</a></p>:<a href={props.post.domain} className="post-body-default-link"><img className="post-body-default-thumbnail" src={props.post.thumbnail} /></a>}

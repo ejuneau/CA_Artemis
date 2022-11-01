@@ -1,0 +1,9 @@
+.loading {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    height: 83.7vh;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
