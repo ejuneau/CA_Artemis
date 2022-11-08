@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/CA_Artemis/static/css/main.2d874d33.css",
-    "main.js": "/CA_Artemis/static/js/main.6807f0b1.js",
+    "main.css": "/CA_Artemis/static/css/main.2d62ea81.css",
+    "main.js": "/CA_Artemis/static/js/main.d56a8059.js",
     "static/js/496.bb63c46c.chunk.js": "/CA_Artemis/static/js/496.bb63c46c.chunk.js",
     "index.html": "/CA_Artemis/index.html",
-    "main.2d874d33.css.map": "/CA_Artemis/static/css/main.2d874d33.css.map",
-    "main.6807f0b1.js.map": "/CA_Artemis/static/js/main.6807f0b1.js.map",
+    "main.2d62ea81.css.map": "/CA_Artemis/static/css/main.2d62ea81.css.map",
+    "main.d56a8059.js.map": "/CA_Artemis/static/js/main.d56a8059.js.map",
     "496.bb63c46c.chunk.js.map": "/CA_Artemis/static/js/496.bb63c46c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2d874d33.css",
-    "static/js/main.6807f0b1.js"
+    "static/css/main.2d62ea81.css",
+    "static/js/main.d56a8059.js"
   ]
 }
