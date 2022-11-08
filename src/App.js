@@ -1,63 +1,84 @@
 import './App.css';
-import Header from './Components/Header/Header';
 import Feed from './Components/Feed/Feed';
-import Footer from './Components/Footer/Footer';
+import HeadFoot from './Components/HeadFoot/HeadFoot';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSortBy } from './Components/util/SortBySlice';
-import { setSubreddit } from './Components/util/SubredditSlice';
-import { setPosts } from './Components/util/PostsSlice';
-import axios from 'axios';
+import { setSortBy } from './Components/util/SortBy/SortBySlice';
+import { setSubreddit } from './Components/util/Subreddit/SubredditSlice';
+import { setPosts } from './Components/util/Posts/PostsSlice';
+import { setComments } from './Components/util/Comments/CommentsSlice';
+import Reddit from './Components/util/Reddit';
 
 
 function App() {
-const dispatch = useDispatch();
-
-const sortBy = useSelector(state => state.sortBy.sortBy)
-const subreddit = useSelector(state => state.subreddit.subreddit)
-const posts = useSelector(state => state.posts.posts)
+  const version = 1.6 //Yes, I'm that lazy
+  const dispatch = useDispatch();
+  const sortBy = useSelector(state => state.sortBy.sortBy)
+  const subreddit = useSelector(state => state.subreddit.subreddit)
+  const posts = useSelector(state => state.posts.posts)
+  const comments = useSelector(state => state.comments.comments);
 
 
   function handleSortByChange(newSortByOption) {
-    dispatch(setPosts(undefined))
-    dispatch(setSortBy(newSortByOption))
+    dispatch(setPosts(undefined));
+    console.log(`handleSortByChange() dispatched!`);
+    dispatch(setSortBy(newSortByOption));
   }
+
   function handleSubredditChange(newSubreddit) {
-    dispatch(setSubreddit(newSubreddit))
+    dispatch(setPosts(undefined));
+    console.log(`handleSubredditChange() dispatched!`);
+    dispatch(setSubreddit(newSubreddit));
   }
   
   function handlePostsChange(newPosts) {
-    dispatch(setPosts(newPosts))
+    dispatch(setPosts(undefined));
+    console.log(`handlePostsChange() dispatched!`);
+    dispatch(setPosts(newPosts));
+  }
+
+  function handleCommentsChange({id, comments}) {
+    console.log(`handleCommentsChange() dispatched!`);
+    dispatch(setComments({id, comments}));
   }
   useEffect(() => {
-    const getPosts = async () => {
-      console.log(`Running getPosts with subreddit "${subreddit}" and sortBy "${sortBy}"`);
-      const response = await axios.get(`https://www.reddit.com/r/${subreddit}/${sortBy}.json`);
-      console.log(`retrieved response! Setting state.posts`);
-      const fetchedPosts = (response.data.data.children.map(post => {
-          return post.data
-      }))
-      handlePostsChange(fetchedPosts);
-  }
-  getPosts();
+    Reddit.getPosts(subreddit, sortBy).then(posts => {
+      console.log(posts)
+      
+
+      
+      handlePostsChange(posts);
+      })
   }, [sortBy, subreddit]);
-  console.log('state.posts:')
-  console.log(posts);
+
   return (
     <>
-      <Header 
-        sortBy={sortBy}
-        handleSortByChange={handleSortByChange}
-      />
+      <header>
+        <HeadFoot 
+          sortBy={sortBy}
+          handleSortByChange={handleSortByChange}
+          handleSubredditChange={handleSubredditChange}
+          subreddit={subreddit}
+          version={version}
+          headFoot="header"
+        />
+      </header>
       <Feed 
         subreddit={subreddit}
         sortBy={sortBy}
         posts={posts}
+        handleCommentsChange={handleCommentsChange}
       />
-      <Footer 
-        sortBy={sortBy}
-        handleSortByChange={handleSortByChange}/>
-  </>
+      <footer>
+        <HeadFoot 
+          handleSortByChange={handleSortByChange}
+          handleSubredditChange={handleSubredditChange}
+          subreddit={subreddit}
+          version={version}
+          headFoot="footer"
+        />
+      </footer>
+    </>
   );
 }
 

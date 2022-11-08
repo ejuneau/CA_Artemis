@@ -1,8 +1,8 @@
 import './Feed.css';
 
-import Reddit from '../util/Reddit';
+// import Reddit from '../util/Reddit';
 import Sidebar from './Sidebar/Sidebar';
-import Posts from './Posts/Posts';
+import Posts from '../util/Posts/Posts';
 
 export default function Feed(props) {
     return (

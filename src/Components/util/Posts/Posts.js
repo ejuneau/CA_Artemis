@@ -1,17 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from 'react-redux';
 
 import './Posts.css'
-import Post from './Post/Post';
-import Loading from './Loading';
-import Reddit from '../../util/Reddit';
+import Post from './Post';
+import Loading from '../Loading/Loading';
 
 const selectPosts = state => state.posts.posts;
 
 export default function Posts(props) {
 
         const posts = useSelector(selectPosts);
-        console.log(posts);
+        //console.log(posts);
         return (
                 <div className="posts">
                         {

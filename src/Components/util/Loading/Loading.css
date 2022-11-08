@@ -1,0 +1,16 @@
+.loading {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 74.6vh;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    align-self: center;
+    transform: translateX(50%);
+    margin-top: 8em;
+}
+
+.loading video {
+    max-height: 80%;
+}

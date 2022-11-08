@@ -1,30 +1,37 @@
-header, header * {
-    background-color: rgb(65, 90, 116);
-}
-
 header {
+  border-bottom-right-radius: 1em;
+  border-bottom-left-radius: 1em;
+}
+header, footer {
     display: flex;
     justify-content: center;
     height: 6em;
-    border-bottom-right-radius: 1em;
-    border-bottom-left-radius: 1em;
+    z-index: 10;
 }
-.header-spacer {
+header, header *, footer, footer * {
+  background-color: rgb(65, 90, 116);
+}
+
+.header-spacer, .footer-spacer {
     display: flex;
     width: 80vw;
     justify-content: space-around;
     align-items: center;
 }
-.header-title {
+.header-title, .footer-title {
   display: flex;
   align-content: flex-end;
   align-items: baseline;
 }
-.header-title h1 {
+.header-title h1, .footer-title h1 {
   margin-right: 0.25em;
 }
-.header-title p {
+.header-title p, .footer-title p {
   margin-left: 0.25em;
 
 }
-  
+
+footer {
+  border-bottom-right-radius: 1em;
+  border-bottom-left-radius: 1em;
+}

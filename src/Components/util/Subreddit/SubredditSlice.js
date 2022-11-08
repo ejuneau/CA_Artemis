@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    subreddit: "all"
+    subreddit: "popular"
 }
 
 const SubredditSlice = createSlice ({
